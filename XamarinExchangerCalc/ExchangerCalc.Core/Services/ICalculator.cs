@@ -2,7 +2,7 @@
 // Copyright(C) 2017
 // Author Adam Kaszubowski
 
-namespace ExchangerCalc.Core
+namespace ExchangerCalc.Core.Services
 {
 	public interface ICalculator
 	{
