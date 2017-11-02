@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="CustomAppStart.cs" />
+    <Compile Include="Models\CalculatedInsulin.cs" />
     <Compile Include="Models\InsulinSettings.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Enums\Unit.cs" />
