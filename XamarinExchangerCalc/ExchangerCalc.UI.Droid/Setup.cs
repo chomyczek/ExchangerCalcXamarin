@@ -10,6 +10,7 @@ using ExchangerCalc.Core;
 
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Platform;
+using MvvmCross.Platform.Logging;
 
 #endregion
 
@@ -32,6 +33,11 @@ namespace ExchangerCalc.UI.Droid
 		{
 			return new App();
 		}
+
+		/// <summary>
+		/// WA for MvvmCross.Core.Platform.LogProviders.ConsoleLogProvider null exception.
+		/// </summary>
+		protected override MvxLogProviderType GetDefaultLogProviderType() => MvxLogProviderType.None;
 
 		#endregion
 	}

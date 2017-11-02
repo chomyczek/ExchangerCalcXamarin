@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="CustomAppStart.cs" />
     <Compile Include="Services\Calculator.cs" />
     <Compile Include="Services\ICalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

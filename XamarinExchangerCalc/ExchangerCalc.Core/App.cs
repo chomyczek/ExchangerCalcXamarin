@@ -20,11 +20,9 @@ namespace ExchangerCalc.Core
 		public App()
 		{
 			Mvx.RegisterType<ICalculator, Calculator>();
-			var calculator = Mvx.Resolve<ICalculator>();
 
-			//var appStart = new MvxAppStart<CalculatorViewModel>();
-			//var appStart = new MvxNavigationService(CalculatorViewModel);
-			//Mvx.RegisterSingleton<();
+			var appStart = new CustomAppStart();
+			Mvx.RegisterSingleton<IMvxAppStart>(appStart);
 		}
 
 		#endregion

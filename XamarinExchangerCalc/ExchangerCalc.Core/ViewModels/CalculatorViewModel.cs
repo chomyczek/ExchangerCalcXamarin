@@ -117,6 +117,7 @@ namespace ExchangerCalc.Core.ViewModels
 		{
 			this.weight = 100;
 			this.carbohydrate = 10;
+			this.calculatedInsulin = 1.6;
 			this.Recalculate();
 			base.Start();
 		}
