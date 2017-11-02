@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              xmlns:local="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
 	<TextView
 		android:layout_width="match_parent"
@@ -24,15 +25,31 @@
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:text="Proteins" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		local:MvxBind="Text Protein" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Fats" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		local:MvxBind="Text Fat" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
 		android:text="Current insulin" />
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		local:MvxBind="Text CurrentInsulin" />
 	<View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#ffff00" />
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="#ffff00" />
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

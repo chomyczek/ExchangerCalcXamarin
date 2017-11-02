@@ -16,7 +16,7 @@ namespace ExchangerCalc.Core.Models
 
 		public double Carbohydrate { get; set; }
 
-		public double MealMeasure { get; set; }
+		public double Weight { get; set; }
 
 		public double Fat { get; set; }
 

@@ -6,6 +6,8 @@
 
 using System.Windows.Input;
 
+using ExchangerCalc.Core.Enums;
+using ExchangerCalc.Core.Models;
 using ExchangerCalc.Core.Services;
 
 using MvvmCross.Core.ViewModels;
@@ -22,11 +24,9 @@ namespace ExchangerCalc.Core.ViewModels
 
 		private double calculatedInsulin;
 
-		private double carbohydrate;
-
 		private double currentInsulin;
 
-		private double weight;
+		private Meal meal;
 
 		#endregion
 
@@ -58,11 +58,11 @@ namespace ExchangerCalc.Core.ViewModels
 		{
 			get
 			{
-				return this.carbohydrate;
+				return this.meal.Carbohydrate;
 			}
 			set
 			{
-				this.carbohydrate = value;
+				this.meal.Carbohydrate = value;
 				this.RaisePropertyChanged(() => this.Carbohydrate);
 				this.Recalculate();
 			}
@@ -82,6 +82,20 @@ namespace ExchangerCalc.Core.ViewModels
 			}
 		}
 
+		public double Fat
+		{
+			get
+			{
+				return this.meal.Fat;
+			}
+			set
+			{
+				this.meal.Fat = value;
+				this.RaisePropertyChanged(() => this.Fat);
+				this.Recalculate();
+			}
+		}
+
 		/// <summary>
 		/// Navigation back button
 		/// </summary>
@@ -93,16 +107,30 @@ namespace ExchangerCalc.Core.ViewModels
 			}
 		}
 
+		public double Protein
+		{
+			get
+			{
+				return this.meal.Protein;
+			}
+			set
+			{
+				this.meal.Protein = value;
+				this.RaisePropertyChanged(() => this.Protein);
+				this.Recalculate();
+			}
+		}
+
 		public double Weight
 		{
 			get
 			{
-				return this.weight;
+				return this.meal.Weight;
 			}
 			set
 			{
-				this.weight = value;
-				this.RaisePropertyChanged(() => this.weight);
+				this.meal.Weight = value;
+				this.RaisePropertyChanged(() => this.Weight);
 				this.Recalculate();
 			}
 		}
@@ -116,8 +144,7 @@ namespace ExchangerCalc.Core.ViewModels
 		/// </summary>
 		public override void Start()
 		{
-			this.weight = 100;
-			this.carbohydrate = 10;
+			this.meal = new Meal { Weight = 200, Fat = 0.5, Carbohydrate = 9.2, Protein = 0.7, UnitMeasure = Unit.Mlliliters };
 			this.currentInsulin = 1.6;
 			this.Recalculate();
 			base.Start();
