@@ -18,7 +18,7 @@ namespace ExchangerCalc.Core
 
 		public void Start(object hint = null)
 		{
-			this.ShowViewModel<CalculatorViewModel>();
+			this.ShowViewModel<MenuViewModel>();
 		}
 
 		#endregion

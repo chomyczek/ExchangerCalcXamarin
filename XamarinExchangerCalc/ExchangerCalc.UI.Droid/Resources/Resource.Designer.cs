@@ -125,7 +125,10 @@ namespace ExchangerCalc.UI.Droid
 			public const int View_Calculator = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int View_SplashScreen = 2130903041;
+			public const int View_Menu = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int View_SplashScreen = 2130903042;
 			
 			static Layout()
 			{
