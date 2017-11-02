@@ -102,11 +102,11 @@ namespace ExchangerCalc.UI.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int MvvmCrossTagId = 2130903040;
+			// aapt resource value: 0x7f040000
+			public const int MvvmCrossTagId = 2130968576;
 			
-			// aapt resource value: 0x7f030001
-			public const int MvxBindingTagUnique = 2130903041;
+			// aapt resource value: 0x7f040001
+			public const int MvxBindingTagUnique = 2130968577;
 			
 			static Id()
 			{
@@ -118,14 +118,30 @@ namespace ExchangerCalc.UI.Droid
 			}
 		}
 		
+		public partial class Layout
+		{
+			
+			// aapt resource value: 0x7f030000
+			public const int View_Calculator = 2130903040;
+			
+			static Layout()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Layout()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
 			static String()
 			{
