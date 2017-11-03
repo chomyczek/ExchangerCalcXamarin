@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangerCalc.Core", "Excha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangerCalc.UI.Droid", "ExchangerCalc.UI.Droid\ExchangerCalc.UI.Droid.csproj", "{D10D6890-9041-458A-BFB8-800150267C4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangerCalc.Tests", "ExchangerCalc.Tests\ExchangerCalc.Tests.csproj", "{0F98BD2E-43DD-4D23-BD10-55CF66BB76D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{D10D6890-9041-458A-BFB8-800150267C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D10D6890-9041-458A-BFB8-800150267C4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D10D6890-9041-458A-BFB8-800150267C4A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0F98BD2E-43DD-4D23-BD10-55CF66BB76D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F98BD2E-43DD-4D23-BD10-55CF66BB76D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F98BD2E-43DD-4D23-BD10-55CF66BB76D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F98BD2E-43DD-4D23-BD10-55CF66BB76D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
