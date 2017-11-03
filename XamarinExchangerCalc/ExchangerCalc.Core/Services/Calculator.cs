@@ -53,11 +53,6 @@ namespace ExchangerCalc.Core.Services
 
 		#region Public Methods and Operators
 
-		public double Calculate(double carbohydrate, double weight, double insulin)
-		{
-			return (carbohydrate / 10) * (weight / 100) * insulin;
-		}
-
 		public CalculatedInsulin Calculate(Meal meal, double insulin)
 		{
 			var calculatedInsulin = new CalculatedInsulin();
@@ -77,7 +72,7 @@ namespace ExchangerCalc.Core.Services
 		private double CalculateCarbohydrateInsulin(Meal meal, double insulin)
 		{
 			var carbohydrates = (meal.Carbohydrate / CarbohydrateDevider);
-			var weightMultiplier = meal.Weight * this.GetWeightDivider(meal.UnitMeasure);
+			var weightMultiplier = meal.Weight / this.GetWeightDivider(meal.UnitMeasure);
 			return carbohydrates * weightMultiplier * insulin;
 		}
 
@@ -106,7 +101,7 @@ namespace ExchangerCalc.Core.Services
 				return time.AddHours(MaxProteinsAndFats - 1);
 			}
 
-			if (proteinsAndFats % 1 < 1)
+			if (proteinsAndFats % 1 >0.5)
 			{
 				time = time.AddMinutes(30);
 			}
@@ -116,7 +111,7 @@ namespace ExchangerCalc.Core.Services
 		private double CalculateProteinsAndFats(Meal meal)
 		{
 			var proteinAndFatKcal = meal.Protein * ProteinMultiplier + meal.Fat * FatMultiplier;
-			var weightMultiplier = meal.Weight * this.GetWeightDivider(meal.UnitMeasure);
+			var weightMultiplier = meal.Weight / this.GetWeightDivider(meal.UnitMeasure);
 			return proteinAndFatKcal / ProteinFattyDevider * weightMultiplier;
 		}
 

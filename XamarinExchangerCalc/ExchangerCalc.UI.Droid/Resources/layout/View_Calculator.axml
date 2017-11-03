@@ -53,10 +53,26 @@
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="Calculated insulin" />
+		android:text="Calculated standard insulin" />
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		local:MvxBind="Text CalculatedInsulin" />
+		local:MvxBind="Text CalculatedStandardInsulin" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Calculated insulin time" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		local:MvxBind="Text CalculatedInsulinTime" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Calculated long time insulin" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		local:MvxBind="Text CalculatedLongInsulin" />
 
 </LinearLayout>

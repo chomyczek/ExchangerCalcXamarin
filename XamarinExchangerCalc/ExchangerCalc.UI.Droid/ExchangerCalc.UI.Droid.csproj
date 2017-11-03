@@ -96,6 +96,7 @@
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\View_Calculator.axml">
       <SubType>Designer</SubType>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\View_SplashScreen.axml">
       <SubType>Designer</SubType>

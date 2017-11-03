@@ -22,7 +22,7 @@ namespace ExchangerCalc.Core.ViewModels
 
 		private readonly ICalculator calculator;
 
-		private double calculatedInsulin;
+		private CalculatedInsulin calculatedInsulin;
 
 		private double currentInsulin;
 
@@ -41,18 +41,15 @@ namespace ExchangerCalc.Core.ViewModels
 
 		#region Public Properties
 
-		public double CalculatedInsulin
-		{
-			get
-			{
-				return this.calculatedInsulin;
-			}
-			set
-			{
-				this.calculatedInsulin = value;
-				this.RaisePropertyChanged(() => this.CalculatedInsulin);
-			}
-		}
+		public string CalculatedInsulinTime
+			=>
+				this.CalculatedInsulin.InsulinTime.Hour > 0
+					? $"{this.CalculatedInsulin.InsulinTime.Hour}H {this.CalculatedInsulin.InsulinTime.Minute % 60}M"
+					: $"{this.CalculatedInsulin.InsulinTime.Minute}M";
+
+		public double CalculatedLongInsulin => this.CalculatedInsulin.LongInsulin;
+
+		public double CalculatedStandardInsulin => this.CalculatedInsulin.StandardInsulin;
 
 		public double Carbohydrate
 		{
@@ -137,6 +134,25 @@ namespace ExchangerCalc.Core.ViewModels
 
 		#endregion
 
+		#region Properties
+
+		private CalculatedInsulin CalculatedInsulin
+		{
+			get
+			{
+				return this.calculatedInsulin;
+			}
+			set
+			{
+				this.calculatedInsulin = value;
+				this.RaisePropertyChanged(() => this.CalculatedLongInsulin);
+				this.RaisePropertyChanged(() => this.CalculatedStandardInsulin);
+				this.RaisePropertyChanged(() => this.CalculatedInsulinTime);
+			}
+		}
+
+		#endregion
+
 		#region Public Methods and Operators
 
 		/// <summary>
@@ -156,7 +172,7 @@ namespace ExchangerCalc.Core.ViewModels
 
 		private void Recalculate()
 		{
-			this.CalculatedInsulin = this.calculator.Calculate(this.Carbohydrate, this.Weight, this.CurrentInsulin);
+			this.CalculatedInsulin = this.calculator.Calculate(this.meal, this.currentInsulin);
 		}
 
 		#endregion
