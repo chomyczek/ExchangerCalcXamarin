@@ -117,7 +117,137 @@ namespace ExchangerCalc.Tests
 			var meal = new Meal();
 			var insulin = default(double);
 			var calc = new Calculator();
-			var expected = 0;
+			var expected = 0d;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_samall_meal()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 1, Protein = 0, Fat = 0, Weight = 1 };
+			var insulin = 1;
+			var calc = new Calculator();
+			var expected = 0.1;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_samall_meal_and_coma_sep_insulin()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 1, Protein = 0, Fat = 0, Weight = 1 };
+			var insulin = 1.5;
+			var calc = new Calculator();
+			var expected = 0.2;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_standard_meal()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 10, Protein = 0, Fat = 0, Weight = 1 };
+			var insulin = 1;
+			var calc = new Calculator();
+			var expected = 1;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_standard_meal_and_coma_sep_insulin()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 10, Protein = 0, Fat = 0, Weight = 1 };
+			var insulin = 1.5;
+			var calc = new Calculator();
+			var expected = 1.5;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_standard_meal_and_coma_sep_insulin_v2()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 10.123, Protein = 0, Fat = 0, Weight = 100 };
+			var insulin = 1.5;
+			var calc = new Calculator();
+			var expected = 1.5;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_standard_meal_v2()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 10.123, Protein = 0, Fat = 0, Weight = 100 };
+			var insulin = 1;
+			var calc = new Calculator();
+			var expected = 1;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_standard_meal_v3()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 19.9, Protein = 0, Fat = 0, Weight = 100 };
+			var insulin = 1;
+			var calc = new Calculator();
+			var expected = 2;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_standard_meal_v3_and_coma_sep_insulin_v2()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 19.9, Protein = 0, Fat = 0, Weight = 100 };
+			var insulin = 1.2;
+			var calc = new Calculator();
+			var expected = 2.4;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_very_big_meal()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 999999.9, Protein = 0, Fat = 0, Weight = 1000 };
+			var insulin = 1;
+			var calc = new Calculator();
+			var expected = 999999.9;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.StandardInsulin);
+		}
+
+		[Fact]
+		public void Correct_standard_insulin_for_very_big_meal_and_coma_sep_insulin_v2()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 999999.9, Protein = 0, Fat = 0, Weight = 1000 };
+			var insulin = 1.9;
+			var calc = new Calculator();
+			var expected = 1899999.8;
 
 			var calculated = calc.Calculate(meal, insulin);
 
