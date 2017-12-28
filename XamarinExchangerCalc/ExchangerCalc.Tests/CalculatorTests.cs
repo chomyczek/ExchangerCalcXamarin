@@ -39,7 +39,7 @@ namespace ExchangerCalc.Tests
 			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 25, Fat = 11, Weight = 76 };
 			var insulin = 1.5;
 			var calc = new Calculator();
-			var expected = 1.13;
+			var expected = 1.1;
 
 			var calculated = calc.Calculate(meal, insulin);
 
@@ -65,7 +65,7 @@ namespace ExchangerCalc.Tests
 			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 2.5, Fat = 10, Weight = 100 };
 			var insulin = 0.7;
 			var calc = new Calculator();
-			var expected = 0.35;
+			var expected = 0.4;
 
 			var calculated = calc.Calculate(meal, insulin);
 
@@ -104,7 +104,7 @@ namespace ExchangerCalc.Tests
 			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 0, Protein = 999999.9, Fat = 999999.9, Weight = 9999 };
 			var insulin = 5.55;
 			var calc = new Calculator();
-			var expected = 3607138889.29;
+			var expected = 3607138889.3;
 
 			var calculated = calc.Calculate(meal, insulin);
 

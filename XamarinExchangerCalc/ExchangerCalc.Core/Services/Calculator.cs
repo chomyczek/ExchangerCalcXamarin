@@ -47,7 +47,9 @@ namespace ExchangerCalc.Core.Services
 		/// </summary>
 		private const int ProteinMultiplier = 4;
 
-		private const int StartTime = 2;// 3;
+		private const int StartTime = 2;
+
+		private const int Round = 1;
 
 		#endregion
 
@@ -73,7 +75,9 @@ namespace ExchangerCalc.Core.Services
 		{
 			var carbohydrates = (meal.Carbohydrate / CarbohydrateDevider);
 			var weightMultiplier = meal.Weight / this.GetWeightDivider(meal.UnitMeasure);
-			return carbohydrates * weightMultiplier * insulin;
+			var calculated = carbohydrates * weightMultiplier * insulin;
+
+			return Math.Round(calculated, Round);
 		}
 
 		private DateTime CalculateInsulinTime(double proteinsAndFats)
@@ -95,7 +99,8 @@ namespace ExchangerCalc.Core.Services
 			// Max time shouldn't be greater then 8
 			if (proteinsAndFats < MaxProteinsAndFats)
 			{
-				time = time.AddHours((int)proteinsAndFats);
+				//time = time.AddHours((int)proteinsAndFats);
+				time = time.AddHours(Math.Floor(proteinsAndFats));
 			}
 			else
 			{
@@ -120,7 +125,9 @@ namespace ExchangerCalc.Core.Services
 		{
 			if (proteinsAndFats > MinimalProteinsAndFats)
 			{
-				return proteinsAndFats * insulin / 2;
+				var calculated = proteinsAndFats * insulin / 2;
+
+				return Math.Round(calculated, Round);
 			}
 			return 0;
 		}
