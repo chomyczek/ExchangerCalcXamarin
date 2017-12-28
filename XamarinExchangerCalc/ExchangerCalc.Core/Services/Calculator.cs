@@ -47,7 +47,7 @@ namespace ExchangerCalc.Core.Services
 		/// </summary>
 		private const int ProteinMultiplier = 4;
 
-		private const int StartTime = 3;
+		private const int StartTime = 2;// 3;
 
 		#endregion
 
@@ -84,21 +84,22 @@ namespace ExchangerCalc.Core.Services
 			{
 				return time;
 			}
-			if (proteinsAndFats < 1)
-			{
-				return time.AddHours(2);
-			}
 
 			time = time.AddHours(StartTime);
+
+			if (proteinsAndFats < 1)
+			{
+				return time;
+			}
 
 			// Max time shouldn't be greater then 8
 			if (proteinsAndFats < MaxProteinsAndFats)
 			{
-				time = time.AddHours((int)proteinsAndFats - 1);
+				time = time.AddHours((int)proteinsAndFats);
 			}
 			else
 			{
-				return time.AddHours(MaxProteinsAndFats - 1);
+				return time.AddHours(MaxProteinsAndFats);
 			}
 
 			if (proteinsAndFats % 1 >0.5)
