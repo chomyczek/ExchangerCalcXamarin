@@ -18,7 +18,102 @@ namespace ExchangerCalc.Tests
 {
 	public class CalculatorTests
 	{
-		#region Public Methods and Operators
+		#region Long_timed_insulin
+
+		[Fact]
+		public void Correct_long_timed_insulin_for_default_input()
+		{
+			var meal = new Meal();
+			var insulin = default(double);
+			var calc = new Calculator();
+			var expected = 0;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.LongInsulin);
+		}
+
+		[Fact]
+		public void Corect_long_timed_insulin_for_normal_data()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 25, Fat = 11, Weight = 76 };
+			var insulin = 1.5;
+			var calc = new Calculator();
+			var expected = 1.13;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.LongInsulin);
+		}
+
+		[Fact]
+		public void Corect_long_timed_insulin_for_normal_data_v2()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 0, Protein = 20, Fat = 20, Weight = 1 };
+			var insulin = 2;
+			var calc = new Calculator();
+			var expected = 2.6;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.LongInsulin);
+		}
+
+		[Fact]
+		public void Corect_long_timed_insulin_for_small_data()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 2.5, Fat = 10, Weight = 100 };
+			var insulin = 0.7;
+			var calc = new Calculator();
+			var expected = 0.35;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.LongInsulin);
+		}
+
+		[Fact]
+		public void Corect_long_timed_insulin_for_very_small_data()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 1, Fat = 1, Weight = 1 };
+			var insulin = 1.5;
+			var calc = new Calculator();
+			var expected = 0;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.LongInsulin);
+		}
+
+		[Fact]
+		public void Correct_long_timed_insulin_for_big_data()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 0, Protein = 100, Fat = 100, Weight = 100 };
+			var insulin = 1.5;
+			var calc = new Calculator();
+			var expected = 975;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.LongInsulin);
+		}
+
+		[Fact]
+		public void Correct_long_timed_insulin_for_very_big_data()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 0, Protein = 999999.9, Fat = 999999.9, Weight = 9999 };
+			var insulin = 5.55;
+			var calc = new Calculator();
+			var expected = 3607138889.29;
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.LongInsulin);
+		}
+
+		#endregion
+
+		#region Time
 
 		[Fact]
 		public void Corect_time_for_normal_data()
@@ -99,17 +194,34 @@ namespace ExchangerCalc.Tests
 		}
 
 		[Fact]
-		public void Correct_long_timed_insulin_for_default_input()
+		public void Correct_time_for_big_data()
+		{
+			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 0, Protein = 100, Fat = 100, Weight = 100 };
+			var insulin = 1.5;
+			var calc = new Calculator();
+			var expected = new DateTime().AddHours(8);
+
+			var calculated = calc.Calculate(meal, insulin);
+
+			Assert.Equal(expected, calculated.InsulinTime);
+		}
+
+		[Fact]
+		public void Correct_time_for_default_input()
 		{
 			var meal = new Meal();
 			var insulin = default(double);
 			var calc = new Calculator();
-			var expected = 0;
+			var expected = new DateTime();
 
 			var calculated = calc.Calculate(meal, insulin);
 
-			Assert.Equal(expected, calculated.LongInsulin);
+			Assert.Equal(expected, calculated.InsulinTime);
 		}
+
+		#endregion
+
+		#region Standard_insulin
 
 		[Fact]
 		public void Correct_standard_insulin_for_default_input()
@@ -125,7 +237,7 @@ namespace ExchangerCalc.Tests
 		}
 
 		[Fact]
-		public void Correct_standard_insulin_for_samall_meal()
+		public void Correct_standard_insulin_for_small_meal()
 		{
 			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 1, Protein = 0, Fat = 0, Weight = 1 };
 			var insulin = 1;
@@ -138,7 +250,7 @@ namespace ExchangerCalc.Tests
 		}
 
 		[Fact]
-		public void Correct_standard_insulin_for_samall_meal_and_coma_sep_insulin()
+		public void Correct_standard_insulin_for_small_meal_and_coma_sep_insulin()
 		{
 			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 1, Protein = 0, Fat = 0, Weight = 1 };
 			var insulin = 1.5;
@@ -252,32 +364,6 @@ namespace ExchangerCalc.Tests
 			var calculated = calc.Calculate(meal, insulin);
 
 			Assert.Equal(expected, calculated.StandardInsulin);
-		}
-
-		[Fact]
-		public void Correct_time_for_big_data()
-		{
-			var meal = new Meal { UnitMeasure = Unit.Portions, Carbohydrate = 0, Protein = 100, Fat = 100, Weight = 100 };
-			var insulin = 1.5;
-			var calc = new Calculator();
-			var expected = new DateTime().AddHours(8);
-
-			var calculated = calc.Calculate(meal, insulin);
-
-			Assert.Equal(expected, calculated.InsulinTime);
-		}
-
-		[Fact]
-		public void Correct_time_for_default_input()
-		{
-			var meal = new Meal();
-			var insulin = default(double);
-			var calc = new Calculator();
-			var expected = new DateTime();
-
-			var calculated = calc.Calculate(meal, insulin);
-
-			Assert.Equal(expected, calculated.InsulinTime);
 		}
 
 		#endregion
