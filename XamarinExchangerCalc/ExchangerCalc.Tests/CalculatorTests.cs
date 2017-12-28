@@ -116,12 +116,12 @@ namespace ExchangerCalc.Tests
 		#region Time
 
 		[Fact]
-		public void Corect_time_for_normal_data()
+		public void Corect_time_with_half_hour_for_normal_data()
 		{
 			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 25, Fat = 11, Weight = 76 };
 			var insulin = 1.5;
 			var calc = new Calculator();
-			var expected = new DateTime().AddHours(3);
+			var expected = new DateTime().AddHours(3).AddMinutes(30);
 
 			var calculated = calc.Calculate(meal, insulin);
 
@@ -129,12 +129,12 @@ namespace ExchangerCalc.Tests
 		}
 
 		[Fact]
-		public void Corect_time_for_normal_data_v2()
+		public void Corect_time_with_half_hour_for_normal_data_v2()
 		{
 			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 20, Fat = 20, Weight = 100 };
 			var insulin = 1.5;
 			var calc = new Calculator();
-			var expected = new DateTime().AddHours(5);
+			var expected = new DateTime().AddHours(4).AddMinutes(30);
 
 			var calculated = calc.Calculate(meal, insulin);
 
@@ -168,12 +168,12 @@ namespace ExchangerCalc.Tests
 		}
 
 		[Fact]
-		public void Corect_time_with_half_hour_for_normal_data()
+		public void Corect_time_for_normal_data()
 		{
 			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 25, Fat = 11, Weight = 111 };
 			var insulin = 1.5;
 			var calc = new Calculator();
-			var expected = new DateTime().AddHours(3).AddMinutes(30);
+			var expected = new DateTime().AddHours(4);
 
 			var calculated = calc.Calculate(meal, insulin);
 
@@ -181,12 +181,12 @@ namespace ExchangerCalc.Tests
 		}
 
 		[Fact]
-		public void Corect_time_with_half_hour_for_normal_data_v2()
+		public void Corect_time_for_normal_data_v2()
 		{
 			var meal = new Meal { UnitMeasure = Unit.Grams, Carbohydrate = 0, Protein = 25, Fat = 25, Weight = 100 };
 			var insulin = 1.5;
 			var calc = new Calculator();
-			var expected = new DateTime().AddHours(5).AddMinutes(30);
+			var expected = new DateTime().AddHours(5);
 
 			var calculated = calc.Calculate(meal, insulin);
 

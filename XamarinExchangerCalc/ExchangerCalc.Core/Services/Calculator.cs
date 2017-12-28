@@ -99,7 +99,6 @@ namespace ExchangerCalc.Core.Services
 			// Max time shouldn't be greater then 8
 			if (proteinsAndFats < MaxProteinsAndFats)
 			{
-				//time = time.AddHours((int)proteinsAndFats);
 				time = time.AddHours(Math.Floor(proteinsAndFats));
 			}
 			else
